@@ -9,6 +9,12 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/contacto', (req, res) => {
+    res.json({
+        message: 'Hola desde el contacto'
+    })
+})
+
 const PORT = process.env.PORT ?? 1234
 
 app.listen(PORT, () => {
