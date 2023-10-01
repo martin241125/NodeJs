@@ -15,6 +15,12 @@ app.get('/contacto', (req, res) => {
     })
 })
 
+app.get('/formulario', (req, res) => {
+    res.json({
+        message: 'Hola desde el formulario'
+    })
+})
+
 const PORT = process.env.PORT ?? 1234
 
 app.listen(PORT, () => {
