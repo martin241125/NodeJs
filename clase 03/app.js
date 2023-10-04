@@ -1,8 +1,11 @@
 const express = require('express')
 const movies = require('./movies.json')
+const crypto = require('node:crypto')
+const z = require('zod')
 
 const app = express()
 app.disable('x-powered-by')
+app.use(express.json())
 
 
 app.get('/movies', (req, res) => {
@@ -39,8 +42,32 @@ app.get('/movies', (req, res) => {
         res.status(404).json({mesage: '404 NOT FOUND'})
     })
     
-    app.get('/movies', (req, res) => {
-        res.json(movies)
+    app.post('/movies', (req, res) => {
+        const {
+            title,
+            genre,
+            director,
+            year,
+            duration,
+            rate,
+            poster
+        } = req.body
+
+        const newMovie = {
+            id : crypto.randomUUID(), 
+            title,
+            genre,
+            director,
+            year,
+            duration,
+            rate : rate ?? 0,
+            poster
+        }
+
+        
+        movies.push(newMovie)
+
+        res.status(201).json(newMovie) // actualizar la cache del cliente
     })
 
 
