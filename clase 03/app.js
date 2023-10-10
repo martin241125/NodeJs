@@ -17,7 +17,7 @@ app.get('/movies', (req, res) => {
 
         )
         return res.json({
-            msg: 'hola',
+            msg: 'Elemento Filtrados',
             filteredRate
         })
     }
