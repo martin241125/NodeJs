@@ -1,13 +1,16 @@
-const express = require('express')
+import express, { json } from 'express'
+import { randomUUID } from 'node:crypto'
+import {validateMovie, validatePartialMovie} from './schema/movies.js '
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
 const movies = require('./movies.json')
-const crypto = require('node:crypto')
-const z = require('zod')
-const validateMovie = require('./schema/movies.js')
-const validatePartialMovie = require('./schema/movies.js')
+
+
  
 const app = express()
 app.disable('x-powered-by')
-app.use(express.json())
+app.use(json())
 
 
 
@@ -38,7 +41,7 @@ app.get('/movies', (req, res) => {
        }
 
         const newMovie = {
-            id : crypto.randomUUID(), 
+            id : randomUUID(), 
             ...result.data
         }
 
