@@ -28,7 +28,7 @@ app.get('/movies', (req, res) => {
     app.get('/movies/:id', (req, res) => {
         const { id } = req.params
         const movie = movies.find(movie => movie.id === id)
-        if(movie) return res.json(movie)
+        if(movie) return res.json({message: 'todo fue bien', movie})
         
         res.status(404).json({mesage: '404 NOT FOUND'})
     })
