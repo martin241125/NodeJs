@@ -23,7 +23,7 @@ app.use('/movies', moviesRouter )
         const movie = movies.find(movie => movie.id === id)
         if(movie) return res.json({message: 'todo fue bien', movie})
         
-        res.status(404).json({mesage: '404 NOT FOUND'})
+        res.status(404).json({mesage: '404 NOT FOUNDpagina no fun'})
     })
     
     app.post('/movies', (req, res) => {
